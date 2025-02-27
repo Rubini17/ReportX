@@ -1,6 +1,11 @@
-
+import { useNavigate } from 'react-router-dom';
 import '../css/login.css' 
 const Login=()=>{
+    
+    const navigate= useNavigate();
+    function dash(){
+        navigate('/dashboard');
+    }
     return(
         <>
       <div className='divclass'>
@@ -12,7 +17,7 @@ const Login=()=>{
             <label>Password:</label>
             <input type="password" placeholder='enter your password'></input><br/>
             <br/>
-            <button>Login</button>
+            <button onClick={dash}>Login</button>
             
            
         </form>

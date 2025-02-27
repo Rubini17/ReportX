@@ -1,5 +1,10 @@
 import '../css/signup.css'
+import {useNavigate} from "react-router-dom"
 const Signup=()=>{
+    const navigate= useNavigate();
+    function log(){
+        navigate('/login');
+    }
     return(
         <>
         <div className='divclass1'>
@@ -16,7 +21,7 @@ const Signup=()=>{
             <label>Location:</label>
             <input type="text" placeholder='enter your location'></input><br/>
             <br/>
-            <button>Signup</button>
+            <button onClick={log}>Signup</button>
 
         </form>
         </div>
