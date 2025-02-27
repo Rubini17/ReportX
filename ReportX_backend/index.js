@@ -23,7 +23,7 @@ mdb
   });
 
   app.get("/",(req, res) => {
-    res.send("<h1>Welcome to Backend Server</h1>");
+    res.send("<h1>Welcome to Backend Server of ReportX</h1>");
   });
 
   app.post("/signup",async(req,res)=>{
