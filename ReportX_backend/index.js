@@ -122,6 +122,19 @@ catch(error){
 }
 
 );
+
+app.get("/status", async (req, res) => {
+  try {
+      const reports = await Report.find();
+      console.log(reports);
+      res.status(200).json("Report details fetched");
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Error fetching reports" });
+  }
+});
+
+
   app.listen(PORT, () => {
     console.log("Server started successfully");
   });
