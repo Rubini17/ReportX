@@ -12,7 +12,7 @@ dotenv.config();
 
 const Signup= require('./models/signupSchema');
 const Login= require('./models/loginSchema');
-
+const Report = require('./models/reportSchema');
 mdb
   .connect(process.env.MONGODB_URL)    
   .then(() => {
@@ -95,6 +95,33 @@ app.get("/getsignupinfo",async(req,res)=>{
   
   });
 
+  app.post("/report",async(req,res)=>{
+    try{
+      
+        const {email,issue,location,pincode}= req.body;
+        console.log(req.body);
+    const newReport= new Report({
+   
+        email:email,
+        issue: issue,
+        location: location,
+        pincode:pincode
+
+    });
+    newReport.save();
+    console.log("Reported successfully");
+
+    res.status(201).json({message:"Reported Successfully",isReport:true});
+}
+
+
+catch(error){
+    console.log(error);
+    res.status(400).json({message:"Report UnSuccessful",isReport:false});
+}
+}
+
+);
   app.listen(PORT, () => {
     console.log("Server started successfully");
   });

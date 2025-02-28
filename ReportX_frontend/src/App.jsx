@@ -25,6 +25,7 @@ function App() {
         <Route path='/status' element={<Status/>}/>
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/adminlogin' element={<AdminLogin/>}/>
+        <Route path='/navbar1' element={<Navbar1/>}/>
       </Routes>
       </BrowserRouter>
 
