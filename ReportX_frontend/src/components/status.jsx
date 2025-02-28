@@ -1,67 +1,54 @@
-// import '../css/status.css'
-// import Navbar2 from './navbar2';
-
-// const Status=()=>{
-//     return(
-//         <>
-//         <Navbar2/>
-//         <h1>Status</h1>
-//         <div>
-
-//         </div>
-//         </>
-//     )
-// }
-// export default Status;
-
-import '../css/status.css';
+import '../css/status.css'
 import Navbar2 from './navbar2';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+const Status=()=>{
+    const [email,setEmail]= useState("");
+    const [reports,setReports]= useState([]);
+    const [isFetched,setIsFetch]= useState(false);
+            const handleStatus= async()=>{
+                try{
+                    const res= await axios.get("https://reportx-backend.onrender.com/status");
+                    setReports(res.data.filter(report=>report.email===email));
+                    setIsFetch(true);
+                }
+                catch(error){
+                    console.log("Error fetching reports",error);
+                }
+            };
 
-const Status = () => {
-    const [reports, setReports] = useState([]);
 
-    useEffect(() => {
-        const fetchReports = async () => {
-            try {
-                const response = await axios.get("https://reportx-backend.onrender.com/status");
-                setReports(response.data);
-            } catch (error) {
-                console.error("Error fetching reports:", error);
-            }
-        };
-        fetchReports();
-    }, []);
-
-    return (
+        return(
         <>
-            <Navbar2 />
-            <div className="status-container">
-                <center><h1 className="status-heading">Reported Issues</h1></center>
-                <table className="status-table">
-                    <thead>
-                        <tr>
-                            <th>Email</th>
-                            <th>Issue</th>
-                            <th>Location</th>
-                            <th>Pincode</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {reports.map((report, index) => (
-                            <tr key={index}>
-                                <td>{report.email}</td>
-                                <td>{report.issue}</td>
-                                <td>{report.location}</td>
-                                <td>{report.pincode}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+        <Navbar2/>
+        <label>Enter your email:</label>
+        <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+        <br/>
+        <button onClick={handleStatus}>View Status</button>
+        <br/>
+        
+        {isFetched && (
+                <>
+                    <h1>Reported Issues</h1>
+                    {reports.length === 0 ? (
+                        <p>No reports available</p>
+                    ) : (
+                        <ul>
+                            {reports.map((report, index) => (
+                                <li key={index}>
+                                    <strong>Email:</strong> {report.email} <br />
+                                    <strong>Issue:</strong> {report.issue} <br />
+                                    <strong>Location:</strong> {report.location} <br />
+                                    <strong>Pincode:</strong> {report.pincode} <br />
+                                    <hr />
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </>
+            )}
         </>
     );
 };
-
 export default Status;
+
