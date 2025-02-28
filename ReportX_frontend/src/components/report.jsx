@@ -5,9 +5,7 @@ import {useState} from 'react';
 import axios from 'axios';
 const Report=()=>{
     const navigate= useNavigate();
-    function status(){
-        navigate('/status');
-    }
+   
     const [email, setEmail]= useState("");
     const [issue, setIssue]= useState("");
     const [location, setLoc]= useState("");
@@ -16,7 +14,7 @@ const Report=()=>{
     const handleReport =  async(event) => {
         event.preventDefault();
         console.log("Button Clicked");
-       const req=  await axios.post("https://backend-mern-6jhn.onrender.com/report", 
+       const req=  await axios.post("https://reportx-backend.onrender.com/report", 
           {
            email:email,
            issue:issue,
