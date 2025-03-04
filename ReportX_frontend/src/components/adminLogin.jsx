@@ -1,11 +1,36 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import '../css/login.css' 
+import axios from 'axios';
 const AdminLogin=()=>{
     
     const navigate= useNavigate();
-    function admin(){
-        navigate('/admin');
-    }
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const handleAdminLogin= async(event)=>{
+      event.preventDefault();
+      console.log("Button Clicked");
+      const req= await axios.post("https://backend-mern-6jhn.onrender.com/adminlogin" ,
+        {
+          email:email,
+          password:password,
+        }
+      );
+  
+      const message= req.data.message;
+      const isAdminLogin= req.data.isAdminLogin;
+      if(isAdminLogin)
+      {
+        alert(message);
+        navigate('/adminstatus');
+      }
+      else{
+        alert(message)
+      }
+  
+    };
+
     return(
         <>
       <div className='divclass'>
@@ -13,13 +38,11 @@ const AdminLogin=()=>{
         <form className='formclass'>
            
             <label>Email:</label>
-            <input type="email" placeholder='enter your email'></input><br/>
+            <input type="email" placeholder='enter your email' value={email} onChange={(e)=>setEmail(e.target.value)}></input><br/>
             <label>Password:</label>
-            <input type="password" placeholder='enter your password'></input><br/>
-            <label>Location:</label>
-            <input type="password" placeholder='enter your location'></input><br/>
+            <input type="password" placeholder='enter your password'  value={password} onChange={(e)=>setPassword(e.target.value)}></input><br/>
             <br/>
-            <button onClick={admin}>Login</button>
+            <button onClick={handleAdminLogin}>Login</button>
             
            
         </form>

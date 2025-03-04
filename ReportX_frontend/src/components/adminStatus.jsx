@@ -1,15 +1,14 @@
 import '../css/status.css'
-import Navbar2 from './navbar2';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-const Status=()=>{
-    const [email,setEmail]= useState("");
+const AdminStatus=()=>{
+    const [location,setLoc]= useState("");
     const [reports,setReports]= useState([]);
     const [isFetched,setIsFetch]= useState(false);
             const handleStatus= async()=>{
                 try{
-                    const res= await axios.get("https://reportx-backend.onrender.com/status");
-                    setReports(res.data.filter(report=>report.email===email));
+                    const res= await axios.get("https://reportx-backend.onrender.com/adminstatus");
+                    setReports(res.data.filter(report=>report.location===location));
                     setIsFetch(true);
                 }
                 catch(error){
@@ -20,16 +19,15 @@ const Status=()=>{
 
         return(
         <>
-        <Navbar2/>
         <label>Enter your email:</label>
-        <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+        <input type='location' value={location} onChange={(e)=>setLoc(e.target.value)}></input>
         <br/>
         <button onClick={handleStatus}>View Status</button>
         <br/>
         
         {isFetched && (
                 <>
-                    <h1>Reported Issues</h1>
+                    <h1>Reported Issues For your Location</h1>
                     {reports.length === 0 ? (
                         <p>No reports available</p>
                     ) : (
@@ -50,5 +48,5 @@ const Status=()=>{
         </>
     );
 };
-export default Status;
+export default AdminStatus;
 

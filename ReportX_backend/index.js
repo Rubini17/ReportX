@@ -13,6 +13,7 @@ dotenv.config();
 const Signup= require('./models/signupSchema');
 const Login= require('./models/loginSchema');
 const Report = require('./models/reportSchema');
+const Admin= require('./models/adminSchema');
 mdb
   .connect(process.env.MONGODB_URL)    
   .then(() => {
@@ -61,12 +62,12 @@ app.get("/getsignupinfo",async(req,res)=>{
     res.json("Signup detail fetched")
   })
 
-  app.post("/login", async(req,res)=>{
+app.post("/login", async(req,res)=>{
     try{
       const {email,password}= req.body;
       const existLogin = await Signup.findOne({
         email:email
-      });
+      }  );
     
       if(existLogin)
       {
@@ -89,6 +90,40 @@ app.get("/getsignupinfo",async(req,res)=>{
     catch(error){
       console.log(error);
       res.status(500).json({message:"Login Unsuccessful", isLogin:false})
+  
+    }
+    
+  
+  });
+
+  app.post("/adminlogin", async(req,res)=>{
+    try{
+      const {email,password}= req.body;
+      const existLogin = await Admin.findOne({
+        email:email
+      }  );
+    
+      if(existLogin)
+      {
+      const isValidPassword= await bcrypt.compare(password, existLogin.password);
+        console.log(isValidPassword);
+        if(isValidPassword)
+        {
+           res.status(200).json({message:" admin login successful",isAdminLogin:true})
+        }
+        else{
+          res.status(401).json({message:"invalid password",isAdminLogin:false})
+        }
+        
+      }
+      else{
+        res.status(400).json({message:"User not found , wanna Signup ",isAdminLogin:false})
+      }
+  
+  }
+    catch(error){
+      console.log(error);
+      res.status(500).json({message:"Login Unsuccessful", isAdminLogin:false})
   
     }
     
@@ -122,6 +157,16 @@ catch(error){
 }
 
 );
+app.get("/adminstatus", async (req, res) => {
+  try {
+      const reports = await Report.find();
+      
+      res.status(200).json(reports);
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Error fetching reports" });
+  }
+});
 
 app.get("/status", async (req, res) => {
   try {

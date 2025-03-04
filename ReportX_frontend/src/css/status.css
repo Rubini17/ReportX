@@ -1,0 +1,20 @@
+.gridClass{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 10px;
+    gap:20px;
+   
+
+}
+
+.gridItems{
+    background-color: gainsboro;
+    list-style-type: none;
+    margin: 10px;
+    border: 1px solid ;
+    padding:40px;
+    padding-left:70px ;
+    font-size: 20px;
+
+}
+

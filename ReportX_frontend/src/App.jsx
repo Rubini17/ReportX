@@ -9,7 +9,7 @@ import Dashboard from './components/dashboard'
 import Report from './components/report';
 import Status from './components/status';
 import AdminLogin from './components/adminLogin'
-import Admin from './components/admin'
+import AdminStatus from './components/adminStatus'
 function App() {
   
 
@@ -23,7 +23,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/report' element={<Report/>}/>
         <Route path='/status' element={<Status/>}/>
-        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/adminstatus' element={<AdminStatus/>}/>
         <Route path='/adminlogin' element={<AdminLogin/>}/>
         <Route path='/navbar1' element={<Navbar1/>}/>
       </Routes>
