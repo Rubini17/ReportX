@@ -105,7 +105,7 @@ app.post("/login", async(req,res)=>{
     
       if(existLogin)
       {
-      const isValidPassword= await bcrypt.compare(password, existLogin.password);
+      const isValidPassword= password === existLogin.password; //issue because password is not encrypted in mongodb
         console.log(isValidPassword);
         if(isValidPassword)
         {
@@ -117,7 +117,7 @@ app.post("/login", async(req,res)=>{
         
       }
       else{
-        res.status(400).json({message:"User not found , wanna Signup ",isAdminLogin:false})
+        res.status(404).json({message:"User not found , wanna Signup ",isAdminLogin:false})
       }
   
   }
