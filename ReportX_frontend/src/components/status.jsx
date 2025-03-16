@@ -39,7 +39,7 @@ const Status=()=>{
                                     <strong>Issue:</strong> {report.issue} <br />
                                     <strong>Location:</strong> {report.location} <br />
                                     <strong>Pincode:</strong> {report.pincode} <br />
-                                    <strong>Status</strong>{report.status}<br />
+                                    <strong>Status:</strong> {report.status}<br />
                                     
                                 </li>
                             ))}

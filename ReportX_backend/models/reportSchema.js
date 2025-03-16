@@ -4,7 +4,7 @@ const reportSchema= mdb.Schema({
     issue: String,
     location: String,
     pincode: Number,
-    status: String,
+    status: { type: String, default: "Pending" },
 
 })
 
