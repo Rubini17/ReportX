@@ -105,7 +105,7 @@ app.post("/login", async(req,res)=>{
     
       if(existLogin)
       {
-      const isValidPassword= password === existLogin.password; //issue because password is not encrypted in mongodb
+      const isValidPassword= (password === existLogin.password);
         console.log(isValidPassword);
         if(isValidPassword)
         {

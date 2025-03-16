@@ -11,7 +11,7 @@ const AdminLogin=()=>{
     const handleAdminLogin= async(event)=>{
       event.preventDefault();
       console.log("Button Clicked");
-      const req= await axios.post("https://backend-mern-6jhn.onrender.com/adminlogin" ,
+      const req= await axios.post("https://reportx-backend.onrender.com/adminlogin" ,
         {
           email:email,
           password:password,
