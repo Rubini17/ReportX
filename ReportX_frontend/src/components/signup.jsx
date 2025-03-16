@@ -54,11 +54,12 @@ const Signup=()=>{
             <label htmlFor='loc'>Location:</label>
             <input type="text" id='loc' placeholder='enter your location'  value={location} onChange={(e)=>setLocation(e.target.value)}></input><br/>
             <br/>
-            <button onClick={handleSignup}>Signup</button>
+            </form>
+            <center><button onClick={handleSignup} className='button'>Signup</button>
             <br/>
-            Already a user?<button onClick={log}>Login</button>
-
-        </form>
+            Already a user?<button onClick={log} className='button'>Login</button>
+          </center>
+        
         </div>
         </>
     )

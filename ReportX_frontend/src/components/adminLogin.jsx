@@ -42,10 +42,11 @@ const AdminLogin=()=>{
             <label>Password:</label>
             <input type="password" placeholder='enter your password'  value={password} onChange={(e)=>setPassword(e.target.value)}></input><br/>
             <br/>
-            <button onClick={handleAdminLogin}>Login</button>
+            </form>
+            <center><button onClick={handleAdminLogin} className='button'>Login</button></center>
             
            
-        </form>
+       
         </div>
         </>
     )

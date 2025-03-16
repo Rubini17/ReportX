@@ -7,7 +7,7 @@ const Dashboard=()=>{
         <Navbar2/>
         <div>
             <h1 className='dashdiv'>Report your Issues</h1>
-            <h1 className='dashdiv'>View your Status</h1>
+            
         </div>
       
         </>

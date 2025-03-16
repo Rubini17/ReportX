@@ -45,12 +45,13 @@ const Login=()=>{
             <input type="email" placeholder='enter your email' value={email} onChange={(e)=>setEmail(e.target.value)}></input><br/>
             <label>Password:</label>
             <input type="password" placeholder='enter your password' value={password} onChange={(e)=>setPassword(e.target.value)}></input><br/>
-            <br/>
-            <button onClick={handleLogin}>Login</button>
-            Already not a User? <button onClick={sign}>Signup</button>
+           
+            </form><br/>
+            <center><button onClick={handleLogin} className='button'>Login</button></center>
+            <center>Already not a User? <button onClick={sign} className='button'>Signup</button></center>
             
            
-        </form>
+        
         </div>
         </>
     )
