@@ -1,10 +1,17 @@
 import '../css/status.css'
 import { useState } from 'react';
 import axios from 'axios';
-const AdminStatus=()=>{
-    const [location,setLoc]= useState("");
+const AdminStatus=({location})=>{
+    
     const [reports,setReports]= useState([]);
     const [isFetched,setIsFetch]= useState(false);
+
+    useEffect(()=>
+    {
+        if(location){
+            handleStatus();
+        }
+    },[location]);
             const handleStatus= async()=>{
                 try{
                     const res= await axios.get("https://reportx-backend.onrender.com/adminstatus");
@@ -30,11 +37,7 @@ const AdminStatus=()=>{
 
         return(
         <>
-        <label>Enter your location:</label>
-        <input type='text' value={location} onChange={(e)=>setLoc(e.target.value)}></input>
-        <br/>
-        <button onClick={handleStatus}>View Status</button>
-        <br/>
+        
         
         {isFetched && (
                 <>
