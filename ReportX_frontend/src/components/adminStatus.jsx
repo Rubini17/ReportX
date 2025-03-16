@@ -15,12 +15,23 @@ const AdminStatus=()=>{
                     console.log("Error fetching reports",error);
                 }
             };
+            const handlechange=async(reportId,newStatus)=>{
+                try{
+                    await axios.put(`https://reportx-backend.onrender.com/updatestatus/${reportId}`, { status: newStatus });
+                    setReports(reports.map(report=>
+                        report._id === reportId ? {...report, status : newStatus} : report
+                    ));
 
+                }
+                catch(error){
+                    console.log("Error updating status",error);
+                }
+            }
 
         return(
         <>
-        <label>Enter your email:</label>
-        <input type='location' value={location} onChange={(e)=>setLoc(e.target.value)}></input>
+        <label>Enter your location:</label>
+        <input type='text' value={location} onChange={(e)=>setLoc(e.target.value)}></input>
         <br/>
         <button onClick={handleStatus}>View Status</button>
         <br/>
@@ -37,7 +48,14 @@ const AdminStatus=()=>{
                                     <strong>Issue:</strong> {report.issue} <br />
                                     <strong>Location:</strong> {report.location} <br />
                                     <strong>Pincode:</strong> {report.pincode} <br />
-                                    <strong>Status</strong><button>Pending</button><br />
+                                    <strong>Status</strong>
+                                    <select value={report.status} onChange={(e)=> handlechange(report._id,e.target.value)}>
+                                        <option value="Pending">Pending</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Resolved">Resolved</option>
+                                        
+                                        </select>
+                                        <br />
                                     
                                 </li>
                             ))}

@@ -19,7 +19,8 @@ const Report=()=>{
            email:email,
            issue:issue,
            location:location,
-           pincode:pincode
+           pincode:pincode,
+           status:"Pending",
     }
         );
         console.log(email,issue);

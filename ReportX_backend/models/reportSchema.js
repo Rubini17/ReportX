@@ -3,7 +3,8 @@ const reportSchema= mdb.Schema({
     email: String,
     issue: String,
     location: String,
-    pincode: Number
+    pincode: Number,
+    status: String,
 
 })
 

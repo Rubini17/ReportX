@@ -179,6 +179,26 @@ app.get("/status", async (req, res) => {
   }
 });
 
+app.put("/updatestatus/:id", async (req, res) => {
+  try {
+      const { id } = req.params;
+      const { status } = req.body;
+
+      // Update the status in MongoDB
+      const updatedReport = await Report.findByIdAndUpdate(id, { status }, { new: true });
+
+      if (!updatedReport) {
+          return res.status(404).json({ message: "Report not found" });
+      }
+
+      res.status(200).json({ message: "Status updated successfully", report: updatedReport });
+  } catch (error) {
+      console.error("Error updating status:", error);
+      res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
 
   app.listen(PORT, () => {
     console.log("Server started successfully");
