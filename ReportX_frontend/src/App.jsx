@@ -23,7 +23,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/report' element={<Report/>}/>
         <Route path='/status' element={<Status/>}/>
-        <Route path='/adminstatus' element={<AdminStatus location={location}/>}/>
+        <Route path='/adminstatus' element={<AdminStatus/>}/>
         <Route path='/adminlogin' element={<AdminLogin/>}/>
         <Route path='/navbar1' element={<Navbar1/>}/>
       </Routes>

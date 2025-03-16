@@ -109,7 +109,7 @@ app.post("/login", async(req,res)=>{
         console.log(isValidPassword);
         if(isValidPassword)
         {
-           res.status(200).json({message:" admin login successful",isAdminLogin:true, location: existLogin.location})
+           res.status(200).json({message:" admin login successful",isAdminLogin:true})
         }
         else{
           res.status(401).json({message:"invalid password",isAdminLogin:false})

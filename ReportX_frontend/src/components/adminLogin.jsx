@@ -20,11 +20,10 @@ const AdminLogin=()=>{
   
       const message= req.data.message;
       const isAdminLogin= req.data.isAdminLogin;
-      const location= req.data.location;
       if(isAdminLogin)
       {
         alert(message);
-        navigate('/adminstatus',{replace:true,state:{location}});
+        navigate('/adminstatus');
       }
       else{
         alert(message)
