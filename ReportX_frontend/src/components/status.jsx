@@ -21,10 +21,12 @@ const Status=()=>{
         return(
         <>
         <Navbar2/>
+        <div className='text1'>
         <label>Enter your email:</label>
-        <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+        <input className='input1'type='email' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+        </div>
         <br/>
-        <button onClick={handleStatus}>View Status</button>
+        <button onClick={handleStatus} className='button'>View Status</button>
         <br/>
         
         {isFetched && (

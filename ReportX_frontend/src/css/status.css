@@ -18,3 +18,20 @@
 
 }
 
+.text1{
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 40px;
+}
+
+.text2{
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+.input1{
+    height: 20px;
+    padding-top: 10px;
+}
+

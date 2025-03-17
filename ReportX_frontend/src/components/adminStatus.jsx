@@ -2,6 +2,7 @@ import '../css/status.css'
 import { useState } from 'react';
 import axios from 'axios';
 import Navbar3 from './navbar3';
+
 const AdminStatus=()=>{
     const [location,setLoc]= useState("");
     const [reports,setReports]= useState([]);
@@ -32,11 +33,12 @@ const AdminStatus=()=>{
         return(
         <>
         <Navbar3/>
-        <label>Enter your location:</label>
-        <input type='text' value={location} onChange={(e)=>setLoc(e.target.value)}></input>
+        <div className='text2'><label>Enter your location:</label>
+        <input className='input1' type='text' value={location} onChange={(e)=>setLoc(e.target.value)}></input></div>
         <br/>
-        <button onClick={handleStatus}>View Status</button>
+        <button onClick={handleStatus} className='button'>View Status</button>
         <br/>
+        
         
         {isFetched && (
                 <>

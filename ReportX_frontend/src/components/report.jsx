@@ -46,14 +46,16 @@ const Report=()=>{
             <label>Email:</label>
             <input type="email" placeholder='enter your email' value={email} onChange={(e)=>setEmail(e.target.value)}></input><br/>
             <label>Issue:</label>
-            <input type='text' placeholder='enter your name' value={issue} onChange={(e)=>setIssue(e.target.value)}></input><br/>
+            <input type='text' placeholder='enter your issue' value={issue} onChange={(e)=>setIssue(e.target.value)}></input><br/>
             <label>Location:</label>
-            <input type='text' placeholder='enter your name' value={location} onChange={(e)=>setLoc(e.target.value)}></input><br/>
+            <input type='text' placeholder='enter your location' value={location} onChange={(e)=>setLoc(e.target.value)}></input><br/>
             <label>Pincode:</label>
-            <input type='number' placeholder='enter your name' value={pincode} onChange={(e)=>setPin(e.target.value)}></input><br/>
-            <button onClick={handleReport}>Submit Issue</button>
+            <input type='number' placeholder='enter your pincode' value={pincode} onChange={(e)=>setPin(e.target.value)}></input><br/>
+            </form>
+            <br></br>
+            <center><button onClick={handleReport} className='button'>Submit Issue</button></center>
            
-        </form>
+      
         </div>
         </>
     )
